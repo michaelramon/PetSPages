@@ -6,8 +6,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 public class WishListTest extends TestBase {
-
-
 	@Test
 	public void verifyWishList() {
 		// given: "A registered user is logged into account"

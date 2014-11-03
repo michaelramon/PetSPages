@@ -12,19 +12,12 @@ import framework.factories.DataFactory;
 import framework.factories.PageFactory;
 
 
-
 public abstract class TestBase {
 	protected WebDriver driver;
 	protected PageFactory pageFactory;
 	protected DataFactory dataFactory;
 
 
-//	@BeforeTest
-//	public void setUp()  {
-	
-//	
-//	}
-	
 	@BeforeClass
 	public void createVariables(){
 		driver = new FirefoxDriver();
@@ -33,8 +26,6 @@ public abstract class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://www.petsmart.com");
-		
-	
 	}
 		
 	@AfterTest

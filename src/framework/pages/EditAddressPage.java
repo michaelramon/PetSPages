@@ -14,8 +14,6 @@ public class EditAddressPage extends BasePage {
 
 	// creates a instance of a wait
 	WebDriverWait wait = (new WebDriverWait(driver, 5));
-	// creates an instance of CustomersData
-	CustomersData customer = new CustomersData();
 	// Creates an instance of the Address book Page
 	AddressBookPage addressBookPage = new AddressBookPage(driver);
 	// creates an instance of the select class
@@ -32,18 +30,18 @@ public class EditAddressPage extends BasePage {
 		addressBookPage.clickAddNewAddress();
 		// wait.until(ExpectedConditions.elementToBeClickable(By
 		// .cssSelector(".ws-button ws-cancel ws-account-address-add-address-form-cancel-button")));
-		setCountry(customer.getCountry());
-		setFirstName(customer.getFirstName());
-		setLastName(customer.getLastName());
-		setShipAddress(customer.getShipAddress1());
-		setShipZipcode(customer.getShipZipcode());
-		setShipCity(customer.getShipCity());
-		setState(customer.setState());
-		setTelephone(customer.setTelephone());
+		setCountry(dataFactory.customersData().getCountry());
+		setFirstName(dataFactory.customersData().getFirstName());
+		setLastName(dataFactory.customersData().getLastName());
+		setShipAddress(dataFactory.customersData().getShipAddress1());
+		setShipZipcode(dataFactory.customersData().getShipZipcode());
+		setShipCity(dataFactory.customersData().getShipCity());
+		setState(dataFactory.customersData().setState());
+		setTelephone(dataFactory.customersData().setTelephone());
 		clickSaveChanges();
 	}
 
-	public void addPerferredShipping(CustomersData customer) {
+	public void addPerferredShipping() {
 		addressBookPage.clickEditShipAddress();
 
 		clickPrefShip();
@@ -62,14 +60,14 @@ public class EditAddressPage extends BasePage {
 		addressBookPage.clickAddNewBilling();
 		act.moveToElement(findByCSSselector("div.pet-footer-legal > p"))
 				.click();
-		setCountry(customer.getCountry());
-		setFirstName(customer.getFirstName());
-		setBillingZipcode(customer.getBillZipcode());
-		setBillAddress(customer.getBillAddress1());
-		setBillingCity(customer.getBillCity());
-		setState(customer.setState());
-		setTelephone(customer.setTelephone());
-		setLastName(customer.getLastName());
+		setCountry(dataFactory.customersData().getCountry());
+		setFirstName(dataFactory.customersData().getFirstName());
+		setBillingZipcode(dataFactory.customersData().getBillZipcode());
+		setBillAddress(dataFactory.customersData().getBillAddress1());
+		setBillingCity(dataFactory.customersData().getBillCity());
+		setState(dataFactory.customersData().setState());
+		setTelephone(dataFactory.customersData().setTelephone());
+		setLastName(dataFactory.customersData().getLastName());
 		clickSaveChanges();
 
 	}

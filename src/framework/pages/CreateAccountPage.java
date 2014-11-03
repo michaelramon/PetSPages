@@ -8,8 +8,7 @@ import org.openqa.selenium.WebElement;
 import framework.data.CustomersData;
 
 public class CreateAccountPage extends BasePage{
-	// create the instance of the customer
-	CustomersData customer = new CustomersData();
+
 
 	public CreateAccountPage(WebDriver driver)  {
 		super(driver);
@@ -18,9 +17,9 @@ public class CreateAccountPage extends BasePage{
 	
 	// creates an account 
 	public void createAccount(){
-		getNewEmail().sendKeys(customer.setEmail());
-		getNewPassword().sendKeys(customer.setPassword());
-		getConfirmNewPassword().sendKeys(customer.setPassword());
+		getNewEmail().sendKeys(dataFactory.customersData().setEmail());
+		getNewPassword().sendKeys(dataFactory.customersData().setPassword());
+		getConfirmNewPassword().sendKeys(dataFactory.customersData().setPassword());
 		getCreateAccountLink().click();
 	}
 	
