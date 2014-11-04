@@ -1,10 +1,10 @@
 package framework.data;
 
-
 public class CustomersData {
 	String shipAddress1, shipAddress2, shipCity, shipZipcode, telephone,
 			billAddress1, billAddress2, billCity, billZipcode, email, password,
-			firstName, lastName, state, country, wishListName, item1, item2, item3;
+			firstName, lastName, state, country, wishListName, item1, item2,
+			item3;
 	ImportCustomerData customer1;
 
 	public CustomersData() {
@@ -26,14 +26,14 @@ public class CustomersData {
 
 	}
 
-	public String getCountry(){
+	public String getCountry() {
 		return country;
 	}
-	
-	public String setCountry(){
+
+	public String setCountry() {
 		return country = customer1.country;
 	}
-	
+
 	public String setEmail() {
 		return email = customer1.email;
 	}
@@ -42,11 +42,11 @@ public class CustomersData {
 		return password = customer1.password;
 
 	}
-	
-	public String setTelephone(){
+
+	public String setTelephone() {
 		return telephone = customer1.telephone;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -60,13 +60,13 @@ public class CustomersData {
 	}
 
 	public void setLastName(String lastName) {
-		 this.lastName = lastName;
+		this.lastName = lastName;
 	}
-	
+
 	public String getState() {
 		return setState();
 	}
-	
+
 	public String setState() {
 		return customer1.state;
 	}
@@ -134,14 +134,13 @@ public class CustomersData {
 	public void setBillZipcode(String billZipcode) {
 		this.billZipcode = billZipcode;
 	}
-	
-	public String getWishListName(){
+
+	public String getWishListName() {
 		return wishListName;
 	}
-	
-	public void setWishListName(String wishListName){
+
+	public void setWishListName(String wishListName) {
 		this.wishListName = wishListName;
 	}
-	
 
 }

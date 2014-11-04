@@ -8,8 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import framework.data.CustomersData;
-
 public class AddressBookPage extends BasePage {
 	// create an instance of the action class
 	Actions act = new Actions(driver);
@@ -33,31 +31,27 @@ public class AddressBookPage extends BasePage {
 	}
 
 	// click the Edit this address button
-	public WebElement getEditBillAddress() {
+	public WebElement getEditBillAddress(String path) {
 		return findByXPath("//tr[.//div[contains(., " + "'"
-				+ dataFactory.customersData().getBillAddress1() + "'"
+				+ path  + "'"
 				+ ")]]/following-sibling::tr//td//a");
 	}
 
 	// click the Edit this address button
-	public WebElement getEditShipAddress() {
+	public WebElement getEditShipAddress(String path) {
 		return findByXPath("//tr[.//div[contains(., " + "'"
-				+ dataFactory.customersData().getShipAddress1() + "'"
+				+ path + "'"
 				+ ")]]/following-sibling::tr//td//a");
 	}
 
-	public void clickEditBillAddress() {
-		getEditBillAddress()
-				.click();
 
-	}
 
-	public void clickEditShipAddress() {
+	public void clickEditShipAddress(String path) {
 		// create a wait
-		WebElement element = getEditShipAddress();
+		WebElement element = getEditShipAddress(path);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", element);
-		// getEditShipAddress().click();
+
 	}
 
 	// return the add new billing address link

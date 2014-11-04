@@ -4,12 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import framework.factories.DataFactory;
-
 public abstract class BasePage {
 	protected WebDriver driver;
-	public DataFactory dataFactory;
-
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 

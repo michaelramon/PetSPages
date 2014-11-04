@@ -17,7 +17,7 @@ public class ProductsPage extends BasePage{
 		clickOnAddWishList();
 		Assert.assertTrue(getAddItemToWishList().isDisplayed());
 		getAddItemToWishList().click();
-		driver.navigate().refresh();
+	driver.navigate().refresh();
 	}
 	
 	private WebElement getAddItemToWishList(){

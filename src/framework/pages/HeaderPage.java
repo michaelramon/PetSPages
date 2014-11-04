@@ -21,6 +21,7 @@ public class HeaderPage extends BasePage {
 
 	// gets the wish list link
 	public WebElement getWishList() {
+		wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(By
 				.cssSelector("a.pet-header-utility-link")));
 		return findByCSSselector("a.pet-header-utility-link");
@@ -44,6 +45,11 @@ public class HeaderPage extends BasePage {
 	// gets the location of the sign outlink
 	public WebElement getSignOut() {
 		return findByCSSselector("a.pet-header-secondary-link.pet-header-secondary-link-logout");
+	}
+	
+	@Override
+	public WebElement findByLink(String link) {
+		return driver.findElement(By.linkText(link));
 	}
 
 }

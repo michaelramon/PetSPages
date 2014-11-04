@@ -1,109 +1,56 @@
 package framework.tests;
 
-
-
-
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import framework.data.CustomersData;
-import framework.pages.*;
-import framework.utilities.Utilities;
-
-public class AddPreferredTest{
-	static WebDriver driver;
-	Utilities frontPage;
-	MyAccountPage myAccountPage;
-	WelcomePage welcomePage;
-	AddressBookPage addressBookPage;
-	EditAddressPage editAddressPage;
-	ChangeAddressPage changeAddressPage;
-	CustomersData customers;
-
-	@BeforeClass
-	public void setUp(){
-		driver = new FirefoxDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		frontPage = new Utilities(driver);
-		myAccountPage = new MyAccountPage(driver);
-		welcomePage = new WelcomePage(driver);
-		addressBookPage = new AddressBookPage(driver);
-		editAddressPage = new EditAddressPage(driver);
-		changeAddressPage = new ChangeAddressPage(driver);
-		customers = new CustomersData();
-		
-
-	}
+public class AddPreferredTest extends TestBase {
 
 	@Test
 	public void test() {
+		// given: "A registered user is logged into account"
+		utilities.signInInitial();
 
-		// Start the web Driver and navigate to petsmart
-		driver.get("http://www.pesmart.com");
-		
-		// Sign in
-		frontPage.signInInitial();
+		// when: "The user navigates to their account link"
+		pageFactory.welcomePage().getMyAccountLink().click();
+		// and: "The user asserts the my account link is present on page"
+		Assert.assertTrue(pageFactory.welcomePage().getMyAccountLink()
+				.isDisplayed());
 
-		//Click the link to the MY Account Link
-		welcomePage.getMyAccountLink().click();
-		
-		// assert the my account link is present on page
-		Assert.assertTrue(welcomePage.getMyAccountLink().isDisplayed());
-
-		// Click the address book link in left column
-		myAccountPage.clickAddressLink();
-
-		// adds the new address
-		editAddressPage.addNewAddress(customers);
-		
-		// adds the billing address
-		editAddressPage.addBillingAddress(customers);
-		
-		// update the customer shipping address
-		editAddressPage.addPerferredShipping(customers);
-		
-
-		
-				// update the customer shipping address
-		editAddressPage.addPerferredBilling();
-		//add a method to assert the shipping is preferred
-//		assert1.billAssert(customers);
-//
-//		assert1.shipAssert(customers);
-		//add a method to assert the billing is preferred
+		// when: "The user clicks on the address link"
+		pageFactory.myAccountPage().clickAddressLink();
+		// and: "The user adds the new shipping address"
+		utilities.addShippingAddress();
+		// and: "The user adds the new billing address"
+		utilities.addBillingAddress();
+		// and: "The user adds a preferred shipping option"
+		utilities.addPreferredShipping();
+		// and: "The user adds a preferred billing option"
+		utilities.addPreferredBilling();
+		// then: "The user asserts the perferred shipping is enabled"
+		Assert.assertTrue(pageFactory.editAddressPage().getPreferredShipping()
+				.isDisplayed());
+		// then: "The user asserts the perferred billing is enabled"
+		Assert.assertTrue(pageFactory.editAddressPage().getPreferredBilling()
+				.isDisplayed());
 
 	}
 
 	@AfterClass
 	public void close() {
-		
-		//  click the delete address button to reset test case		
-		// Start the web Driver and navigate to petsmart
-		driver.get("http://www.petsmart.com/");
-		
 
-		//Click the link to the MY Account Link
-		welcomePage.clickMyAccountLink();
-		
-		// assert the my account link is present on page
-		Assert.assertTrue(welcomePage.getMyAccountLink().isDisplayed());
-
-		// Click the address book link in left column
-		myAccountPage.clickAddressLink();
-//		delete the address stored to reset user data
+		// when: "Thse user navigates to the account link"
+		pageFactory.welcomePage().clickMyAccountLink();
+		// and: "The user assert the my account link is present on page"
+		Assert.assertTrue(pageFactory.myAccountPage().getAddressLink()
+				.isDisplayed());
+		// and: "The user click the address book link in left column"
+		pageFactory.myAccountPage().clickAddressLink();
+		// and: "The user refreshes the page to enable the delete link"
 		driver.navigate().refresh();
-		editAddressPage.deleteAddress();
-//		close the driver
-		driver.close();	
+		// and: "The user deletes the address stored to reset user data"
+		pageFactory.editAddressPage().deleteAddress();
 
-	
 	}
 
 }

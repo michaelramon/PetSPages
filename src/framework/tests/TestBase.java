@@ -10,12 +10,14 @@ import org.testng.annotations.BeforeClass;
 
 import framework.factories.DataFactory;
 import framework.factories.PageFactory;
+import framework.utilities.Utilities;
 
 
 public abstract class TestBase {
 	protected WebDriver driver;
-	protected PageFactory pageFactory;
+	protected  PageFactory pageFactory;
 	protected DataFactory dataFactory;
+	protected Utilities utilities;
 
 
 	@BeforeClass
@@ -23,6 +25,7 @@ public abstract class TestBase {
 		driver = new FirefoxDriver();
 		pageFactory = new PageFactory(driver);
 		dataFactory = new DataFactory();
+		utilities = new Utilities(driver);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://www.petsmart.com");

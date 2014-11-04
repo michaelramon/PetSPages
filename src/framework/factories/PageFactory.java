@@ -12,17 +12,12 @@ import framework.pages.ProductFrontPage;
 import framework.pages.ProductsPage;
 import framework.pages.WelcomePage;
 import framework.pages.WishListPage;
-import framework.utilities.Utilities;
 
 public class PageFactory {
 	protected WebDriver driver;
 
 	public PageFactory(WebDriver driver) {
 		this.driver = driver;
-	}
-
-	public Utilities utilities() {
-		return new Utilities(driver);
 	}
 
 	public MyAccountPage myAccountPage() {

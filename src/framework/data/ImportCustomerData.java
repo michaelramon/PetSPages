@@ -11,24 +11,26 @@ public class ImportCustomerData {
 			firstName, lastName, state, country, wishListName, item1, item2,
 			item3;
 
+	Scanner customerScanner = null;
 	// import a File Reader and set up txt file to pull data from
-	FileReader customerPrint; 
+	FileReader customerPrint = null;
 	// import a buffer reader
-	BufferedReader customerBuff; 
+	BufferedReader customerBuff = null;
+	String[] customerString = null;
 
-	public ImportCustomerData(){
+	public ImportCustomerData() {
 
-		// create a scanner
-		Scanner customerScanner = new Scanner(customerBuff);
-		String[] customerString = new String[17];
 		int counter = 0;
 
 		try {
-			
-			 customerPrint = new FileReader("Customer.txt");
+
+			customerPrint = new FileReader("Customer.txt");
 			// use while loop to pull data
-			 customerBuff =  new BufferedReader(customerPrint);
-			
+			customerBuff = new BufferedReader(customerPrint);
+
+			// create a scanner
+			customerScanner = new Scanner(customerBuff);
+			customerString = new String[17];
 			do {
 				customerString[counter] = customerScanner.nextLine();
 				counter++;

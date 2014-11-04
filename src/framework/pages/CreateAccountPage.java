@@ -5,8 +5,6 @@ package framework.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import framework.data.CustomersData;
-
 public class CreateAccountPage extends BasePage{
 
 
@@ -16,10 +14,10 @@ public class CreateAccountPage extends BasePage{
 	}
 	
 	// creates an account 
-	public void createAccount(){
-		getNewEmail().sendKeys(dataFactory.customersData().setEmail());
-		getNewPassword().sendKeys(dataFactory.customersData().setPassword());
-		getConfirmNewPassword().sendKeys(dataFactory.customersData().setPassword());
+	public void createAccount(String email, String password, String confirm){
+		getNewEmail().sendKeys(email);
+		getNewPassword().sendKeys(password);
+		getConfirmNewPassword().sendKeys(confirm);
 		getCreateAccountLink().click();
 	}
 	
